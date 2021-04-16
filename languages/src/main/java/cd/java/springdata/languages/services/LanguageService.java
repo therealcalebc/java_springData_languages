@@ -25,9 +25,17 @@ public class LanguageService {
 	}
 	
 	/**
+	 * @param l the new Language to create in the db
+	 * @return the newly created language
+	 */
+	public Language createOne(Language l) {
+		return languageRepository.save(l);
+	}
+	
+	/**
 	 * @return list of all the Languages in the db
 	 */
-	public List<Language> getAllLanguages() {
+	public List<Language> readAll() {
 		return languageRepository.findAll();
 	}
 	
@@ -35,7 +43,7 @@ public class LanguageService {
 	 * @param id the id of the Language to retrieve from the db
 	 * @return the Language that was retrieved
 	 */
-	public Language getOneLanguage(Long id) {
+	public Language readOne(Long id) {
 		Optional<Language> optLang = languageRepository.findById(id);
 		if(optLang.isPresent())
 			return optLang.get();
@@ -44,25 +52,17 @@ public class LanguageService {
 	}
 	
 	/**
-	 * @param l the new Language to create in the db
-	 * @return the newly created language
-	 */
-	public Language addNewLanguage(Language l) {
-		return languageRepository.save(l);
-	}
-	
-	/**
 	 * @param l the Language to update in the db
 	 * @return the updated language
 	 */
-	public Language updateLanguage(Language l) {
+	public Language updateOne(Language l) {
 		return languageRepository.save(l);
 	}
 	
 	/**
 	 * @param id the id of the Language to delete from the db
 	 */
-	public void removeLanguage(Long id) {
+	public void destroyOne(Long id) {
 		if(languageRepository.existsById(id)) {
 			languageRepository.deleteById(id);
 		}
