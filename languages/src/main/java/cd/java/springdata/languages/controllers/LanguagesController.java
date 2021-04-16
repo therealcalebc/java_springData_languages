@@ -34,7 +34,7 @@ public class LanguagesController {
 	}
 	
 	@GetMapping("/languages")
-	public String index(Model model) {
+	public String index(@ModelAttribute Language language, Model model) {
 		List<Language> langList = languageService.readAll();
 		model.addAttribute("languages", langList);
 		return "languages/index.jsp";
@@ -42,10 +42,10 @@ public class LanguagesController {
 	
 	@PostMapping("/languages")
 	public String addNew(@Valid @ModelAttribute Language language, BindingResult result) {
-		if(result.hasErrors())
-			return "languages/index.jsp";
-		else
-			return "redirect:/languages";
+		System.out.println("LanguagesController.addNew(): result.hasErrors() == " + result.hasErrors());
+		if(result.hasErrors())return "languages/index.jsp";
+		languageService.createOne(language);
+		return "redirect:/languages";
 	}
 	
 	@GetMapping("/languages/{id}")
@@ -64,7 +64,7 @@ public class LanguagesController {
 		return "languages/edit.jsp";
 	}
 	
-	@PutMapping("/languages")
+	@PutMapping("/languages/{id}")
 	public String update(@Valid @ModelAttribute Language language, BindingResult result) {
 		if(result.hasErrors()) return "languages/edit.jsp";
 		languageService.updateOne(language);

@@ -9,7 +9,7 @@
 </head>
 <body>
 	<h1>Edit Language</h1>
-	<form action="/languages/${language.id}" method="post">
+	<form action="/languages/${language.id}" method="post" style="display: inline;">
 		<input type="hidden" name="_method" value="delete">
 		<input type="submit" value="Delete">
 	</form>
@@ -28,9 +28,9 @@
 	        <form:input path="creator"/>
 	    </p>
 	    <p>
-	        <form:label path="version">Version</form:label>
-	        <form:errors path="version"/>
-	        <form:input path="version"/>
+	        <form:label path="currentVersion">Version</form:label>
+	        <form:errors path="currentVersion"/>
+	        <form:input path="currentVersion"/>
 	    </p>
 	    <input type="submit" value="Submit"/>
 	</form:form>

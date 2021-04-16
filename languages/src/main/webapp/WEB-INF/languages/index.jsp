@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isErrorPage="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Languages!</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
 	<h1>All Languages</h1>
@@ -26,7 +27,7 @@
 	            <td><c:out value="${language.creator}"/></td>
 	            <td><c:out value="${language.currentVersion}"/></td>
 	            <td>
-	            	<form action="/books/${language.id}" method="post">
+	            	<form action="/languages/${language.id}" method="post" style="display: inline;">
 						<input type="hidden" name="_method" value="delete">
 						<input type="submit" value="delete">
 					</form>
@@ -51,9 +52,9 @@
 	        <form:input path="creator"/>
 	    </p>
 	    <p>
-	        <form:label path="version">Version</form:label>
-	        <form:errors path="version"/>
-	        <form:input path="version"/>
+	        <form:label path="currentVersion">Version</form:label>
+	        <form:errors path="currentVersion"/>
+	        <form:input path="currentVersion"/>
 	    </p>
 	    <input type="submit" value="Submit"/>
 	</form:form>
