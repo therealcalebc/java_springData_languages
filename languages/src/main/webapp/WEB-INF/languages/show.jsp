@@ -5,17 +5,17 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>BOOKS!!</title>
+	<title>Languages!</title>
 </head>
 <body>
-	<h1><c:out value="${book.title}"/></h1>
-	<p>Description: <c:out value="${book.description}"/></p>
-	<p>Language: <c:out value="${book.language}"/></p>
-	<p>Number of pages: <c:out value="${book.numberOfPages}"/></p>
-	<a href="/books/${book.id}/edit">Edit Book</a>
-	<form action="/books/${book.id}" method="post">
+	<h1><c:out value="${language.name}"/></h1>
+	<p><c:out value="${language.creator}"/></p>
+	<p><c:out value="${language.currentVersion}"/></p>
+	<a href="/languages/${language.id}/edit">Edit</a>
+	<form action="/languages/${language.id}" method="post">
 		<input type="hidden" name="_method" value="delete">
 		<input type="submit" value="Delete">
 	</form>
+	<a href="/languages">Dashboard</a>
 </body>
 </html>
